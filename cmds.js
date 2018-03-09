@@ -134,12 +134,12 @@ exports.testCmd = (rl,id) => {
 
 exports.playCmd = rl => {
     let score = 0;   // Variable para almacenar los aciertos
-    let toBeResolved = [];
+    let toBeResolved = []; // Array que almacena las preguntas a responder
 
-    models.quiz.findAll()
+    models.quiz.findAll() 
         .then(quizzes => {
             quizzes.forEach((quiz,id) => {
-                toBeResolved[id] = quiz;
+                toBeResolved[id] = quiz; // Array de preguntas por responder
             });
             const playOne = () => { 
                 if (toBeResolved.length === 0) {  
@@ -149,9 +149,9 @@ exports.playCmd = rl => {
                     rl.prompt();
 
                 } else {
-                    let id = Math.trunc(Math.random() * toBeResolved.length); //Obtenemos un indice al azar
-                    let quiz = toBeResolved[id];
-                    toBeResolved.splice(id, 1);
+                    let id = Math.trunc(Math.random() * toBeResolved.length); // Obtenemos un id al azar 
+                    let quiz = toBeResolved[id]; // Nos devuelve el quiz asociado al id
+                    toBeResolved.splice(id, 1); // Elimina del array la pregunta asociada al id 
                     return makeQuestion(rl, `${quiz.question}?`)
                         .then(ans => {
                             if (quiz.answer.toLowerCase().trim() === ans.toLowerCase().trim()) {
