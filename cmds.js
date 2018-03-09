@@ -141,8 +141,8 @@ exports.playCmd = rl => {
             quizzes.forEach((quiz,id) => {
                 toBeResolved[id] = quiz;
             });
-            const playOne = () => { //Función para ir preguntando todos los quizzes
-                if (toBeResolved.length === 0) {  //Si no quedan preguntas(se han preguntado todas)--- Fin del juego
+            const playOne = () => { 
+                if (toBeResolved.length === 0) {  
                     log("No hay nada más que preguntar.");
                     log(`Fin del juego. Aciertos: ${score}`);
                     biglog(`${score}`, 'magenta');
