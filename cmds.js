@@ -66,7 +66,7 @@ const validateId = id => {
             } else {
                 resolve(id);
             }
-        }
+        } 
     });
 };
 
